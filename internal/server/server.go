@@ -26,12 +26,12 @@ func New(jsonPath string) *server {
 	}
 }
 
-func (s *server) StartServer(port uint) error {
+func (s *server) StartServer() error {
   
 	handler := s.registerRoutes()
 
 	server := &http.Server{
-		Addr:         fmt.Sprintf(":%d", port),
+		Addr:         fmt.Sprintf(":%d", s.api.Port),
 		Handler:      handler,
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
