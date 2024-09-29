@@ -39,17 +39,15 @@ func (s *server) registerRoutes() *http.ServeMux {
 
 func handler (endpoint *models.Endpoint) http.HandlerFunc {	
 	return func(w http.ResponseWriter, r *http.Request) {
-		println("JSONPATH")
-		println(endpoint.JsonPath)
+	
 		if endpoint.JsonPath == nil {
 			WriteSuccess(w, endpoint.Status, nil)
 			return
 		}
 
-		println("SECOND")
-
 		payload, err := utils.LoadPayload(*endpoint.JsonPath)
 		if err != nil {
+			println(err.Error())
 			WriteError(w, http.StatusInternalServerError, fmt.Sprintf("Could not open file %s. Are you sure it exists?", *endpoint.JsonPath))
 			return
 		}
