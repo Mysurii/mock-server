@@ -15,6 +15,7 @@ var allowedMethods = []string{
     "GET",
     "POST",
     "PUT",
+	"PATCH",
     "DELETE",
 }
 
