@@ -37,7 +37,7 @@ The configuration file should be in JSON format. Here is an example:
 
 ```bash
 {
-  "port": 3000,
+  "port": 8080,
   "endpoints": [
     {
       "method": "POST",
